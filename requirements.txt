@@ -1,0 +1,6 @@
+Django==2.0.2
+gitdb2==2.0.3
+GitPython==2.1.8
+psycopg2==2.7.4
+pytz==2018.3
+smmap2==2.0.3
