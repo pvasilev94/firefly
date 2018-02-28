@@ -1,18 +1,5 @@
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{% bootstrap_messages %}
-
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+{% extends 'base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi, <i class="fas fa-user-circle"></i> {{ user.username }}!
-  <br>
-  <a href="{% url 'logout' %}" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
-{% else %}
-  <p>You are not logged in <i class="fas fa-user-times"></i></p>
-  <p>Please Login to continue.</p>
-  <a href="{% url 'login' %}" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>Login</a>
-{% endif %}
+
 {% endblock %}

@@ -120,5 +120,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# static folder in the base directory (where manage.py lives)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+# after login and logout go back to index
 LOGIN_REDIRECT_URL = '/fireflyapp'
 LOGOUT_REDIRECT_URL = '/fireflyapp'

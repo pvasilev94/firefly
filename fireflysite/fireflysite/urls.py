@@ -16,9 +16,13 @@ Including another URLconf
 
 from django.urls import include, path
 from django.contrib import admin
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('fireflyapp/', include('fireflyapp.urls')),
     path('fireflyapp/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

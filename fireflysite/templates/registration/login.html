@@ -1,15 +1,14 @@
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{% bootstrap_messages %}
+{% extends 'base.html' %}
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<!--{% load bootstrap4 %}-->
 
+{% block content %}
 <div class="alert alert-dark">
    <h2>Login</h2>
     <form method="post" class="form">
       {% csrf_token %}
       {% bootstrap_form form %}
-      <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
     </form>
 </div>
+{% endblock %}
