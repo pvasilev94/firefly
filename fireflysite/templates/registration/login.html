@@ -1,14 +1,25 @@
 {% extends 'base.html' %}
-
+{% load static from staticfiles %}
 <!--{% load bootstrap4 %}-->
 
 {% block content %}
-<div class="alert alert-dark">
-   <h2>Login</h2>
-    <form method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-        <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
-    </form>
+<video id="firevideo" autoplay muted loop>
+  <source src="{% static 'fire_video.mp4' %}" type="video/mp4">
+</video>
+
+<div class="container">
+    <div class="h-100 row align-items-center">
+      <div class="col">
+        <div class="alert alert-dark">
+            <h2>Login</h2>
+            <form method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </form>
+        </div>
+      </div>
+    </div>
 </div>
+
 {% endblock %}
