@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+
+<!--Adding chart-->
+<div class="container">
+    <div class="alert alert-dark" id="chart">
+        <canvas id="myChart"></canvas>
+        <script>
+        var dates = ["1/12/2017",
+                     "2/12/2017",
+                     "3/12/2017",
+                     "4/12/2017",
+                     "5/12/2017",
+                     "6/12/2017",
+                     "7/12/2017",
+                     "8/12/2017",
+                     "9/12/2017",
+                     "10/12/2017"];
+        var fireindex = [3.679971096,
+                        1.325232836,
+                        0.6606182818,
+                        1.807323465,
+                        18.86741574,
+                        45.18199676,
+                        51.01260115,
+                        62.23718636,
+                        69.34538097,
+                        98.45157158];
+
+         var bgcolor = new Array();
+         var bordcolor = new Array();
+
+        <!--Loop through the fireindex data and add colors depending on value -->
+        for (i=0; i<fireindex.length; i++){
+            if (fireindex[i] < 50){
+                bgcolor.push('rgba(51, 204, 51, 0.2)');
+                bordcolor.push('rgba(51, 204, 51, 1)');
+            }
+            else if(fireindex[i] >= 50 && fireindex[i] < 75){
+                bgcolor.push('rgba(255, 255, 0, 0.2)');
+                bordcolor.push('rgba(255, 255, 0, 1)');
+            }
+            else if(fireindex[i] >= 75 && fireindex[i] < 90){
+                bgcolor.push('rgba(255, 153, 51, 0.2)');
+                bordcolor.push('rgba(255, 153, 51, 1)');
+            }
+            else if(fireindex[i] >= 90 && fireindex[i] < 97.5){
+                bgcolor.push('rgba(255, 102, 102, 0.2)');
+                bordcolor.push('rgba(255, 102, 102, 1)');
+            }
+            else{
+                bgcolor.push('rgba(255, 0, 0, 0.2)');
+                bordcolor.push('rgba(255, 0, 0, 1)');
+            }
+        }
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Fire Index - Lilac (SanDiego)',
+                    data: fireindex,
+                    backgroundColor: bgcolor,
+                    borderColor: bordcolor,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+    </div>
+</div>
+
+{% endblock %}
